@@ -23,8 +23,8 @@ export default function App(){
   }
   return(
     <>
-      <button id='increment' onClick={handlerIncrement}>increment</button>
       <div id='counter' className={className}>{counter}</div>
+      <button id='increment' onClick={handlerIncrement}>increment</button>
       <button id='decrement' onClick={handlerDecrement}>decrement</button>
     </>
   )
