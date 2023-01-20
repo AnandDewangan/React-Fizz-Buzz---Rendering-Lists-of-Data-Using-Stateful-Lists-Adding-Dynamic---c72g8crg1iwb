@@ -1,42 +1,31 @@
 import React, { useState } from 'react';
 import '../styles/App.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 1,
-      color: "white",
-    };
+export default function App(){
+  const [counter, setCounter] = useState(1);
+
+  function handlerIncrement(){
+    setCounter(counter+1);
+  }
+  function handlerDecrement(){
+    setCounter(counter-1);
   }
 
-  checkCount() {
-    if (this.state.count % 15 === 0) {
-      this.setState({ color: "green" });
-      return "fizzbuzz";
-    } else if (this.state.count % 3 === 0) {
-      this.setState({ color: "red" });
-      return "fizz";
-    } else if (this.state.count % 5 === 0) {
-      return "buzz";
-    } else {
-      this.setState({ color: "white" });
-      return "normal";
-    }
+  let className = 'normal';
+  if(counter%3===0){
+    className='fizz';
   }
-
-
-  render() {
-    return (
-      <div>
-        <div id="counter" className={this.checkCount()} style={{ backgroundColor: this.state.color }}>
-          <span>{this.state.count}</span>
-        </div>
-
-        <button onClick={() => this.setState({ count: this.state.count + 1 })}>Increment</button>
-        <button onClick={() => this.setState({ count: this.state.count - 1 })}>Decrement</button>
-      </div>
-    );
+  else if(counter%5==0){
+    className='buzz';
   }
+  else if(counter%3==0 && counter%5){
+    className='fizzbuzz';
+  }
+  return(
+    <>
+      <button id='increment' onClick={handlerIncrement}>increment</button>
+      <div id='counter' className={className}>{counter}</div>
+      <button id='decrement' onClick={handlerDecrement}>decrement</button>
+    </>
+  )
 }
-export default App;
