@@ -12,15 +12,17 @@ export default function App(){
   }
 
   let className = 'normal';
-  if(counter%3===0){
-    className='fizz';
-  }
-  else if(counter%5==0){
-    className='buzz';
-  }
-  else if(counter%3==0 && counter%5){
+  
+  if(counter%3===0 && counter%5===0){
     className='fizzbuzz';
   }
+  else if(counter%3===0){
+    className='fizz';
+  }
+  else if(counter%5===0){
+    className='buzz';
+  }
+  
   return(
     <>
       <div id='counter' className={className}>{counter}</div>
